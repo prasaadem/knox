@@ -1,0 +1,39 @@
+<div class="property-container" *ngIf="address.length">
+  <mat-accordion>
+    <mat-expansion-panel hideToggle *ngFor="let addr of address">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div mat-subheader>
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <span
+              [matBadge]="(addr.properties || []).length"
+              matBadgeOverlap="false"
+              >{{ addr.address }}</span
+            >
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <span>Properties</span>
+      <mat-list>
+        <mat-list-item *ngFor="let property of addr.properties">
+          <div mat-line>Owner: {{ property.owner }}</div>
+          <div mat-line>Address: {{ property.address }}</div>
+          <div mat-line>City: {{ property.city }}</div>
+          <div mat-line>County: {{ property.county }}</div>
+          <div mat-line>State: {{ property.state }}</div>
+          <div mat-line>Zipcode: {{ property.zip }}</div>
+          <mat-divider></mat-divider>
+          <button
+            mat-icon-button
+            class="knox-icon"
+            aria-label="share icon"
+            (click)="onNavigate('/property', property.id)"
+          >
+            <mat-icon>build</mat-icon>
+          </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <mat-icon>local_fire_department</mat-icon>
+  <span>Knox</span>
+  <span class="knox-spacer"></span>
+  <div *ngIf="auth.user$ | async as user; else login">
+    <button
+      mat-icon-button
+      class="knox-icon"
+      aria-label="share icon"
+      (click)="onNavigate('/home')"
+    >
+      <mat-icon>home</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="knox-icon"
+      aria-label="share icon"
+      (click)="onNavigate('/properties')"
+    >
+      <mat-icon>other_houses</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="knox-icon"
+      aria-label="share icon"
+      (click)="auth.signout()"
+    >
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+
+  <ng-template #login>
+    <button
+      mat-icon-button
+      class="knox-icon"
+      aria-label="share icon"
+      (click)="auth.googleSignin()"
+    >
+      <mat-icon>login</mat-icon>
+    </button>
+  </ng-template>
+</mat-toolbar>

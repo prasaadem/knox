@@ -1,0 +1,80 @@
+<mat-card class="property-card">
+  <mat-card-title>Add Property</mat-card-title>
+  <form class="property-form" [formGroup]="propertyForm" (submit)="submit()">
+    <mat-form-field class="property-full-width">
+      <mat-label>Address</mat-label>
+      <input
+        matInput
+        placeholder="1091 Grandeview Ave"
+        value=""
+        matInput
+        formControlName="address"
+        required
+      />
+      <mat-error
+        *ngIf="
+          propertyForm.controls.address.touched &&
+          propertyForm.controls.address.invalid
+        "
+      >
+        <span *ngIf="true">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="property-full-width">
+      <mat-label>City</mat-label>
+      <input
+        matInput
+        placeholder="Huntsville"
+        matInput
+        formControlName="city"
+        required
+      />
+      <mat-error
+        *ngIf="
+          propertyForm.controls.city.touched &&
+          propertyForm.controls.city.invalid
+        "
+      >
+        <span *ngIf="true">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="property-full-width" appearance="fill">
+      <mat-label>State</mat-label>
+      <mat-select formControlName="state">
+        <mat-option *ngFor="let state of states" [value]="state">{{
+          state
+        }}</mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="
+          propertyForm.controls.state.touched &&
+          propertyForm.controls.state.invalid
+        "
+      >
+        <span *ngIf="true">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="property-full-width">
+      <mat-label>Zip Code</mat-label>
+      <input
+        matInput
+        placeholder="35824"
+        matInput
+        formControlName="zipCode"
+        required
+      />
+      <mat-error
+        *ngIf="
+          propertyForm.controls.zipCode.touched &&
+          propertyForm.controls.zipCode.invalid
+        "
+      >
+        <span *ngIf="true">This field is mandatory.</span>
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">
+      Add Property
+    </button>
+  </form>
+</mat-card>

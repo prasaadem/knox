@@ -1,0 +1,53 @@
+<mat-card class="info-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Address</mat-card-title>
+    <mat-card-subtitle> </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <span class="info-title">Owner: </span>
+      <span class="info-text">{{ (info || {}).owner }}</span>
+    </div>
+    <div>
+      <span class="info-title">Location: </span>
+      <span class="info-text">{{ (info || {}).address }}</span>
+    </div>
+    <div>
+      <span class="info-title">Year Built: </span>
+      <span class="info-text">{{ (info || {}).yearBuilt }}</span>
+    </div>
+    <div>
+      <span class="info-title">Certification Date: </span>
+      <span class="info-text">{{ (info || {}).certificationDate }}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions> </mat-card-actions>
+</mat-card>
+
+<mat-card class="info-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>The Highlights</mat-card-title>
+    <mat-card-subtitle
+      >Here are some of the most popular amenities</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <div class="amenities">
+      <div class="amenity" *ngIf="isAirConditioned">
+        <div class="icon">
+          <mat-icon [inline]="true">cleaning_services</mat-icon>
+        </div>
+        <span>Air Conditioning</span>
+      </div>
+      <div class="amenity" *ngIf="hasFireplace">
+        <div class="icon">
+          <mat-icon [inline]="true">fireplace</mat-icon>
+        </div>
+        <span>Fireplace</span>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions> </mat-card-actions>
+</mat-card>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "knox-306023": {
+      "hosting": {
+        "knox": [
+          "knox-306023"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "knox-306023"
+  }
+}

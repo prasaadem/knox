@@ -1,0 +1,11 @@
+{
+  "/*": {
+    "target": "qvmservices-test.quantarium.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "logLevel": "debug"
+  }
+}
