@@ -1,12 +1,50 @@
 .info-card {
   margin: 10px;
   .info-title {
-    font-size: 12px;
+    font-size: 14px;
     color: darkgray;
   }
   .info-text {
     font-size: 14px;
     color: black;
+  }
+
+  .left {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+  }
+
+  .rent-input {
+    height: 50px;
+    border: 0px;
+    width: 20vw;
+  }
+
+  .property-info {
+    display: flex;
+    justify-content: space-evenly;
+    .details {
+      display: flex;
+      flex-direction: column;
+    }
+    .additional-details {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.graph-cards {
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+
+  .graph-card {
+    margin: 10px;
+    width: 40vw;
   }
 }
 .amenities {
@@ -25,4 +63,26 @@
       font-size: 60px;
     }
   }
+}
+
+.chart-wrapper {
+  .info-title {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: purple;
+  }
+  .info-text {
+    font-size: 18px;
+    text-transform: capitalize;
+    color: purple;
+  }
+}
+
+.map-view-container {
+  width: 300px;
+  height: 300px;
+}
+.map-view {
+  width: 300px;
+  height: 300px;
 }

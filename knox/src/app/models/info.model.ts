@@ -25,4 +25,96 @@ export class PropertyInfo {
   get certificationDate(): string {
     return `${this['Certification_Date']}`;
   }
+
+  get currentEquity(): string {
+    return `${this['Current_Est_Equity_Dollars']}`;
+  }
+
+  get estimatedValue(): string {
+    return `${this['ESTIMATED_VALUE']}`;
+  }
+
+  get marketValueImprovement(): string {
+    return `${this['Market_Value_Improvement']}`;
+  }
+
+  get priceMax(): string {
+    return `${this['PRICE_RANGE_MAX']}`;
+  }
+
+  get priceMin(): string {
+    return `${this['PRICE_RANGE_MIN']}`;
+  }
+
+  get priceAssessment(): string {
+    return `${this['Sales_Price_from_Assessment']}`;
+  }
+
+  get assessedValue(): string {
+    return `${this['Total_Assessed_Value']}`;
+  }
+
+  get marketValue(): string {
+    return `${this['Total_Market_Value']}`;
+  }
+
+  get mtgBalance(): string {
+    return `${this['Mtg01_Curr_Est_Bal']}`;
+  }
+
+  get mtgInterest(): string {
+    return `${this['Mtg01_Est_Monthly_Interest']}`;
+  }
+
+  get mtgPi(): string {
+    return `${this['Mtg01_Est_Monthly_PI']}`;
+  }
+
+  get mtgPrinciple(): string {
+    return `${this['Mtg01_Est_Monthly_Principal']}`;
+  }
+
+  get mtgLoan(): string {
+    return `${this['Mtg01_Loan_Amount']}`;
+  }
+
+  get tax(): string {
+    return `${this['Tax_Amount']}`;
+  }
+
+  get buildings(): string {
+    return `${this['No_of_Buildings']}`;
+  }
+
+  get stories(): string {
+    return `${this['No_of_Stories']}`;
+  }
+
+  get baths(): string {
+    return `${this['Number_of_Baths']}`;
+  }
+
+  get bedrooms(): string {
+    return `${this['Number_of_Bedrooms']}`;
+  }
+
+  get partialBaths(): string {
+    return `${this['Number_of_Partial_Baths']}`;
+  }
+
+  get saleDate(): string {
+    return `${this['LSale_Recording_Date']}`.slice(0, 4);
+  }
+
+  get marketYear(): string {
+    return `${this['Market_Value_Year']}`.slice(0, 4);
+  }
+
+  get latitude(): string {
+    return `${this['PA_Latitude']}`;
+  }
+
+  get longitude(): string {
+    return `${this['PA_Longitude']}`;
+  }
 }

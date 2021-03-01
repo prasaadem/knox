@@ -5,30 +5,128 @@
     <mat-card-subtitle> </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <div>
-      <span class="info-title">Owner: </span>
-      <span class="info-text">{{ (info || {}).owner }}</span>
-    </div>
-    <div>
-      <span class="info-title">Location: </span>
-      <span class="info-text">{{ (info || {}).address }}</span>
-    </div>
-    <div>
-      <span class="info-title">Year Built: </span>
-      <span class="info-text">{{ (info || {}).yearBuilt }}</span>
-    </div>
-    <div>
-      <span class="info-title">Certification Date: </span>
-      <span class="info-text">{{ (info || {}).certificationDate }}</span>
+    <div class="property-info">
+      <div class="details">
+        <div>
+          <span class="info-title">Owner: </span>
+          <span class="info-text">{{ (info || {}).owner }}</span>
+        </div>
+        <div>
+          <span class="info-title">Location: </span>
+          <span class="info-text">{{ (info || {}).address }}</span>
+        </div>
+        <div>
+          <span class="info-title">Year Built: </span>
+          <span class="info-text">{{ (info || {}).yearBuilt }}</span>
+        </div>
+        <div>
+          <span class="info-title">Certification Date: </span>
+          <span class="info-text">{{ (info || {}).certificationDate }}</span>
+        </div>
+      </div>
+      <div class="additional-details">
+        <div>
+          <span class="info-title">Buildings: </span>
+          <span class="info-text">{{ (info || {}).buildings }}</span>
+        </div>
+        <div>
+          <span class="info-title">Stories: </span>
+          <span class="info-text">{{ (info || {}).stories }}</span>
+        </div>
+        <div>
+          <span class="info-title">Baths: </span>
+          <span class="info-text">{{ (info || {}).baths }}</span>
+        </div>
+        <div>
+          <span class="info-title">Bedrooms: </span>
+          <span class="info-text">{{ (info || {}).bedrooms }}</span>
+        </div>
+        <div>
+          <span class="info-title">Partial Baths: </span>
+          <span class="info-text">{{ (info || {}).partialBaths }}</span>
+        </div>
+      </div>
     </div>
   </mat-card-content>
   <mat-card-actions> </mat-card-actions>
 </mat-card>
+<mat-card class="info-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Computations</mat-card-title>
+    <mat-card-subtitle>Change this data to generate charts</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="left">
+      <span class="info-title">Expected Rent: ${{ expectedRent }}</span>
+      <span class="info-title">Knox Charge: {{ knoxCharge }}%</span>
+      <span class="info-title">Insurance Charge: ${{ insurance }}</span>
+      <input
+        class="rent-input"
+        (blur)="onChange($event)"
+        name="expectedRent"
+        value=""
+        placeholder="Type your expected Rent: 2500"
+      />
+      <input
+        class="rent-input"
+        (blur)="onChangeCharge($event)"
+        name="knox charge"
+        value=""
+        placeholder="Type your expected knox charge: 2"
+      />
+      <input
+        class="rent-input"
+        (blur)="onChangeInsurance($event)"
+        name="insurance"
+        value=""
+        placeholder="Type your expected insurance charge: 200"
+      />
+    </div>
+  </mat-card-content>
+  <mat-card-actions> </mat-card-actions>
+</mat-card>
+<div class="graph-cards">
+  <ng-container *ngFor="let graph of graphs">
+    <mat-card class="graph-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ graph.name }}</mat-card-title>
+        <mat-card-subtitle>{{ graph.subtitle }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-wrapper">
+          <canvas
+            *ngIf="!isDonut(graph)"
+            baseChart
+            [datasets]="graph.lineChartData"
+            [labels]="graph.lineChartLabels"
+            [options]="graph.lineChartOptions"
+            [colors]="graph.lineChartColors"
+            [legend]="graph.lineChartLegend"
+            [chartType]="graph.lineChartType"
+            [plugins]="graph.lineChartPlugins"
+          >
+          </canvas>
+          <canvas
+            baseChart
+            *ngIf="isDonut(graph)"
+            [data]="graph.doughnutChartData"
+            [labels]="graph.lineChartLabels"
+            [chartType]="graph.lineChartType"
+          >
+          </canvas>
+        </div>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>
 
 <mat-card class="info-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>The Highlights</mat-card-title>
+    <mat-card-title>Property Highlights</mat-card-title>
     <mat-card-subtitle
       >Here are some of the most popular amenities</mat-card-subtitle
     >
@@ -51,3 +149,17 @@
   </mat-card-content>
   <mat-card-actions> </mat-card-actions>
 </mat-card>
+
+<!-- <mat-card class="info-card">
+  <mat-card-header> </mat-card-header>
+  <mat-card-content>
+    <lib-google-maps-angular
+      class="map-view"
+      (markerClicked)="onMarkerClicked($event)"
+      [markers]="markers"
+      [latLong]="latLong"
+      [apiKey]="'AIzaSyDwvq2gUFqop3Xi02WDNDcJ32KXJo-LbXI'"
+    ></lib-google-maps-angular>
+  </mat-card-content>
+  <mat-card-actions> </mat-card-actions>
+</mat-card> -->

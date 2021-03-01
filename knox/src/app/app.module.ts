@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
@@ -29,6 +30,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PropertiesComponent } from './components/properties/properties.component';
 import { PropertyComponent } from './components/property/property.component';
+import { ChartsModule } from 'ng2-charts';
+
+import { GoogleMapsAngularModule } from 'google-maps-angular';
 
 @NgModule({
   declarations: [
@@ -56,9 +60,12 @@ import { PropertyComponent } from './components/property/property.component';
     MatListModule,
     MatExpansionModule,
     MatBadgeModule,
+    MatSliderModule,
+    ChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    GoogleMapsAngularModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
