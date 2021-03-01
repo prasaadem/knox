@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "knox",
-      "public": "dist/knox",
+      "public": "dist",
       "ignore": ["**/.*"],
       "headers": [
         {

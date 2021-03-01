@@ -17,22 +17,63 @@ export class PropertyService {
 
   constructor(private afs: AngularFirestore, private http: HttpClient) {}
 
-  async getProperties(uid: string) {
+  async getProperties(uid: string, isAdmin: boolean = false) {
     let snapshot = await this.afs
-      .collection('properties', (ref) => ref.where('uid', '==', uid))
+      .collection('properties', (ref) => {
+        if (!isAdmin) return ref.where('uid', '==', uid);
+        else return ref;
+      })
       .get()
       .toPromise();
 
     var properties: Property[] = [];
     snapshot.forEach((doc) => {
-      properties.push(<Property>doc.data());
+      let property = {
+        ...(<Property>doc.data()),
+        id: doc.id,
+      };
+      properties.push(property);
     });
     return properties;
   }
+
+  async getPublicProperties() {
+    let snapshot = await this.afs
+      .collection('properties', (ref) => ref.where('visibility', '==', true))
+      .get()
+      .toPromise();
+
+    var properties: Property[] = [];
+    snapshot.forEach((doc) => {
+      let property = {
+        ...(<Property>doc.data()),
+        id: doc.id,
+      };
+      properties.push(property);
+    });
+    return properties;
+  }
+
+  async updateCanView(src: Property) {
+    let propertyRef = this.afs.collection(`properties`);
+    return await propertyRef.doc(src.id).update({ canView: src.canView });
+  }
+
+  async updateSupportRequest(src: Property) {
+    let propertyRef = this.afs.collection(`properties`);
+    return await propertyRef.doc(src.id).update({ properties: src.properties });
+  }
+
+  async updateVisibility(src: Property) {
+    let propertyRef = this.afs.collection(`properties`);
+    return await propertyRef.doc(src.id).update({ visibility: src.visibility });
+  }
+
   async saveProperty(src: Property) {
     let properties = await this.fetchProperties(src);
     src = {
       ...src,
+      canView: false,
       properties: <IProperty[]>(properties || []),
     };
 

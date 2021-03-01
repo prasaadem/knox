@@ -4,7 +4,10 @@ export interface Property {
   state: string;
   zipCode: string;
   uid: string;
-  properties?: IProperty[];
+  properties: IProperty[];
+  canView: boolean;
+  id?: string;
+  visibility: boolean;
 }
 
 export interface IProperty {
@@ -21,4 +24,5 @@ export interface IProperty {
   street_address: string;
   use_code: string;
   zip: string;
+  support_requests: { date: string }[];
 }

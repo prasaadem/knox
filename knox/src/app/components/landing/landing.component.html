@@ -1,1 +1,20 @@
-<p>landing works!</p>
+<div class="public-container">
+  <div class="icons">
+    <button
+      mat-icon-button
+      class="knox-icon"
+      aria-label="share icon"
+      (click)="auth.googleSignin()"
+    >
+      <mat-icon>login</mat-icon>
+    </button>
+    <button mat-icon-button class="knox-icon" aria-label="share icon">
+      <mat-icon>facebook</mat-icon>
+    </button>
+    <button mat-icon-button class="knox-icon" aria-label="share icon">
+      <mat-icon>email</mat-icon>
+    </button>
+  </div>
+
+  <app-public-properties></app-public-properties>
+</div>

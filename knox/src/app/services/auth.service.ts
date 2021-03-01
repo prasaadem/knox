@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
 import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
@@ -17,7 +16,13 @@ import { User } from '../models/user.model';
 })
 export class AuthService {
   user$: Observable<User | null | undefined>;
-  user: User = { uid: '', email: '', displayName: '', photoURL: '' };
+  user: User = {
+    uid: '',
+    email: '',
+    displayName: '',
+    photoURL: '',
+    isAdmin: false,
+  };
 
   constructor(
     private router: Router,
@@ -41,6 +46,19 @@ export class AuthService {
     );
   }
 
+  async isAdmin(uid: string) {
+    let snapshot = await this.afs
+      .collection('admins', (ref) => ref.where('adminId', '==', uid))
+      .get()
+      .toPromise();
+
+    var admins: any[] = [];
+    snapshot.forEach((doc) => {
+      admins.push(doc.data());
+    });
+    return admins;
+  }
+
   async googleSignin() {
     var provider = new firebase.auth.GoogleAuthProvider();
     let credential = await this.afa.signInWithPopup(provider);
@@ -57,6 +75,7 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
+      isAdmin: false,
     };
 
     return userRef.set(data, { merge: true });

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropertyService } from '../../services/property.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-property',
@@ -78,7 +79,8 @@ export class AddPropertyComponent implements OnInit {
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private propertyService: PropertyService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.propertyForm = this.formBuilder.group({
       address: [null, Validators.required],
@@ -95,14 +97,24 @@ export class AddPropertyComponent implements OnInit {
       if (!this.propertyForm.valid) {
         return;
       }
+      this.openSnackBar('Adding...');
       var property = {
         ...this.propertyForm.value,
         uid: this.auth.user.uid,
       };
       await this.propertyService.saveProperty(property);
+      this.openSnackBar('Property has been added successfully. Redirecting...');
       this.router.navigate(['/properties']);
     } catch (e) {
       console.log(e);
     }
+  }
+
+  openSnackBar(title: string) {
+    this._snackBar.open(title, 'Close', {
+      duration: 500,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
   }
 }

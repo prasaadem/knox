@@ -1,0 +1,17 @@
+.public-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .example-card {
+    width: 20vw;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .card-image {
+      width: 100%;
+    }
+  }
+}
