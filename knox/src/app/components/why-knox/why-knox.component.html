@@ -1,0 +1,179 @@
+<div class="knox-container">
+  <div class="form-input">
+    <mat-card class="graph-card">
+      <mat-card-title>Update Graphs</mat-card-title>
+      <form class="graph-form" [formGroup]="graphForm" (submit)="submit()">
+        <h2 class="header">Mortgage Information</h2>
+        <mat-form-field class="graph-full-width">
+          <mat-label>Purchase Value</mat-label>
+          <input
+            matInput
+            placeholder="100000"
+            value=""
+            matInput
+            formControlName="purchaseValue"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="graph-full-width">
+          <mat-label>Year of Purchase</mat-label>
+          <input
+            matInput
+            placeholder="2000"
+            matInput
+            formControlName="purchaseYear"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="graph-full-width">
+          <mat-label>APR</mat-label>
+          <input
+            matInput
+            placeholder="3"
+            matInput
+            formControlName="apr"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="graph-full-width">
+          <mat-label>Downpayment Rate</mat-label>
+          <input
+            matInput
+            placeholder="2"
+            matInput
+            formControlName="downpaymentRate"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="graph-full-width">
+          <mat-label>Property tax Rate</mat-label>
+          <input
+            matInput
+            placeholder="2"
+            matInput
+            formControlName="propertyTaxRate"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="graph-full-width">
+          <mat-label>Mortgage Period</mat-label>
+          <input
+            matInput
+            placeholder="120"
+            matInput
+            formControlName="mortgagePeriod"
+            required
+          />
+        </mat-form-field>
+        <h2 class="header">Monthly Expenses</h2>
+        <mat-form-field class="graph-full-width">
+          <mat-label>Monthly Premium</mat-label>
+          <input
+            matInput
+            placeholder="1000"
+            matInput
+            formControlName="premium"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="graph-full-width">
+          <mat-label>Monthly Tax</mat-label>
+          <input
+            matInput
+            placeholder="100"
+            matInput
+            formControlName="tax"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="graph-full-width">
+          <mat-label>Monthly Insurance</mat-label>
+          <input
+            matInput
+            placeholder="150"
+            matInput
+            formControlName="insurance"
+            required
+          />
+        </mat-form-field>
+        <h2 class="header">Property Information</h2>
+        <mat-form-field class="graph-full-width">
+          <mat-label>Market value</mat-label>
+          <input
+            matInput
+            placeholder="150000"
+            matInput
+            formControlName="marketValue"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="graph-full-width">
+          <mat-label>Expected Rent</mat-label>
+          <input
+            matInput
+            placeholder="150"
+            matInput
+            formControlName="expectedRent"
+            required
+          />
+        </mat-form-field>
+        <h2 class="header">Knox</h2>
+        <mat-form-field class="graph-full-width">
+          <mat-label>Knox Charge</mat-label>
+          <input
+            matInput
+            placeholder="10"
+            matInput
+            formControlName="knoxCharge"
+            required
+          />
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Compute</button>
+      </form>
+    </mat-card>
+  </div>
+  <div class="graph-view">
+    <h2 class="header">Your Mortgage Details</h2>
+    <ng-container *ngFor="let graph of graphs">
+      <div class="graph-container">
+        <mat-card class="graph-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ graph.name }}</mat-card-title>
+            <mat-card-subtitle>{{ graph.subtitle }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="chart-wrapper">
+              <canvas
+                *ngIf="!isDonut(graph)"
+                baseChart
+                [datasets]="graph.lineChartData"
+                [labels]="graph.lineChartLabels"
+                [options]="graph.lineChartOptions"
+                [colors]="graph.lineChartColors"
+                [legend]="graph.lineChartLegend"
+                [chartType]="graph.lineChartType"
+                [plugins]="graph.lineChartPlugins"
+              >
+              </canvas>
+              <canvas
+                baseChart
+                *ngIf="isDonut(graph)"
+                [data]="graph.doughnutChartData"
+                [labels]="graph.lineChartLabels"
+                [chartType]="graph.lineChartType"
+              >
+              </canvas>
+            </div>
+          </mat-card-content>
+          <mat-card-actions> </mat-card-actions>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

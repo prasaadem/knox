@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { PropertiesComponent } from './components/properties/properties.component';
 import { PropertyComponent } from './components/property/property.component';
+import { WhyKnoxComponent } from './components/why-knox/why-knox.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'property/:id',
     component: PropertyComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'whyknox/:id',
+    component: WhyKnoxComponent,
     canActivate: [AuthGuard],
   },
   {

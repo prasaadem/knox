@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChartDataSets, ChartType } from 'chart.js';
 import { Label, Color, MultiDataSet } from 'ng2-charts';
 import { PropertyInfo } from '../../models/info.model';
 import { PropertyService } from '../../services/property.service';
 
-class GraphUI {
+export class GraphUI {
   lineChartData: ChartDataSets[] = [];
 
   lineChartLabels: Label[] = [];
@@ -90,6 +90,7 @@ export class PropertyComponent implements OnInit {
 
   constructor(
     private _route: ActivatedRoute,
+    private router: Router,
     private pService: PropertyService
   ) {}
 
@@ -339,6 +340,10 @@ export class PropertyComponent implements OnInit {
 
   onMarkerClicked(event: any) {
     console.log(event);
+  }
+
+  onNavigate() {
+    this.router.navigate(['whyknox', this.propertyId]);
   }
 }
 

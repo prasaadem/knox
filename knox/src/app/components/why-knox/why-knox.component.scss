@@ -1,0 +1,35 @@
+.knox-container {
+  display: flex;
+  flex-direction: row;
+
+  .form-input {
+    display: flex;
+    height: 90vh;
+    overflow-y: scroll;
+
+    .graph-card {
+      .graph-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+
+        .header {
+          text-decoration: underline;
+        }
+
+        .graph-full-width {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .graph-view {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    height: 90vh;
+    overflow-y: scroll;
+    margin: 10px;
+  }
+}

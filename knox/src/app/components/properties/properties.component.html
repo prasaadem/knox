@@ -37,46 +37,60 @@
           <div mat-line>County: {{ property.county }}</div>
           <div mat-line>State: {{ property.state }}</div>
           <div mat-line>Zipcode: {{ property.zip }}</div>
+          <div
+            mat-line
+            class="action-menu"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: space-evenly;
+            "
+          >
+            <button
+              *ngIf="isAdmin || !!addr.canView"
+              mat-icon-button
+              class="knox-icon"
+              aria-label="share icon"
+              (click)="onNavigate('/property', property.id)"
+            >
+              <!-- <mat-icon>build</mat-icon> -->
+              View Property Info
+            </button>
+            <button
+              *ngIf="!isAdmin"
+              mat-icon-button
+              class="knox-icon"
+              aria-label="share icon"
+              (click)="onSupport(property, i, addr)"
+            >
+              <!-- <mat-icon>support_agent</mat-icon> -->
+              Contact Support
+            </button>
+            <button
+              *ngIf="isAdmin && !!addr.canView"
+              mat-icon-button
+              class="knox-icon"
+              aria-label="share icon"
+              (click)="onCanEdit(addr)"
+            >
+              <!-- <mat-icon>lock</mat-icon> -->
+              Hide Property Info
+            </button>
+            <button
+              *ngIf="isAdmin && !addr.canView"
+              mat-icon-button
+              class="knox-icon"
+              aria-label="share icon"
+              (click)="onCanEdit(addr)"
+            >
+              <!-- <mat-icon>lock_open</mat-icon> -->
+              Show Property Info
+            </button>
+          </div>
           <div mat-line *ngFor="let req of property.support_requests || []">
             Requested support on : {{ req.date | date: "short" }}
           </div>
           <mat-divider></mat-divider>
-          <button
-            *ngIf="isAdmin || !!addr.canView"
-            mat-icon-button
-            class="knox-icon"
-            aria-label="share icon"
-            (click)="onNavigate('/property', property.id)"
-          >
-            <mat-icon>build</mat-icon>
-          </button>
-          <button
-            *ngIf="!isAdmin"
-            mat-icon-button
-            class="knox-icon"
-            aria-label="share icon"
-            (click)="onSupport(property, i, addr)"
-          >
-            <mat-icon>support_agent</mat-icon>
-          </button>
-          <button
-            *ngIf="isAdmin && !!addr.canView"
-            mat-icon-button
-            class="knox-icon"
-            aria-label="share icon"
-            (click)="onCanEdit(addr)"
-          >
-            <mat-icon>lock</mat-icon>
-          </button>
-          <button
-            *ngIf="isAdmin && !addr.canView"
-            mat-icon-button
-            class="knox-icon"
-            aria-label="share icon"
-            (click)="onCanEdit(addr)"
-          >
-            <mat-icon>lock_open</mat-icon>
-          </button>
         </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>

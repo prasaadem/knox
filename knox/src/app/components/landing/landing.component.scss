@@ -1,9 +1,11 @@
 body {
   background: #00091b;
   color: #fff;
+  height: 100vh;
 }
 .public-container {
   display: flex;
+  height: 100vh;
 }
 h1 {
   font-size: 50px;
@@ -26,6 +28,8 @@ p {
 
 .icons {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .icons i {

@@ -1,3 +1,9 @@
 .property-container {
   margin: 20px;
 }
+
+.action-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

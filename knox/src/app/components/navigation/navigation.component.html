@@ -1,18 +1,22 @@
 <mat-toolbar class="knox-toolbar">
-  <img src="../../../assets/knox-tagline-logo.svg" />
+  <img src="../../../assets/knox-tagline-logo.svg" (click)="onNavigate('/')" />
   <span class="knox-spacer"></span>
   <div *ngIf="auth.user$ | async as user; else login">
     <button
       mat-icon-button
       class="knox-icon"
       aria-label="share icon"
+      [routerLink]="['/home']"
+      [routerLinkActive]="['active']"
       (click)="onNavigate('/home')"
     >
-      <mat-icon>home</mat-icon>
+      <mat-icon>add</mat-icon>
     </button>
     <button
       mat-icon-button
       class="knox-icon"
+      [routerLink]="['/properties']"
+      [routerLinkActive]="['active']"
       aria-label="share icon"
       (click)="onNavigate('/properties')"
     >

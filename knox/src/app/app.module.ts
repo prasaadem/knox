@@ -35,6 +35,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { GoogleMapsAngularModule } from 'google-maps-angular';
 import { PublicPropertiesComponent } from './components/public-properties/public-properties.component';
+import { WhyKnoxComponent } from './components/why-knox/why-knox.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { PublicPropertiesComponent } from './components/public-properties/public
     PropertiesComponent,
     PropertyComponent,
     PublicPropertiesComponent,
+    WhyKnoxComponent,
   ],
   imports: [
     BrowserModule,

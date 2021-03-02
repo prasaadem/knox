@@ -16,12 +16,6 @@
     min-height: 100px;
   }
 
-  .rent-input {
-    height: 50px;
-    border: 0px;
-    width: 20vw;
-  }
-
   .property-info {
     display: flex;
     justify-content: space-evenly;
@@ -44,7 +38,7 @@
 
   .graph-card {
     margin: 10px;
-    width: 40vw;
+    flex: 1 0;
   }
 }
 .amenities {
@@ -85,4 +79,85 @@
 .map-view {
   width: 300px;
   height: 300px;
+}
+
+.property-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid lightgray;
+
+  .info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .image-container {
+      display: flex;
+      flex: 1 0;
+
+      .image {
+        width: 20vw;
+      }
+    }
+    .basic-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0;
+      justify-content: space-evenly;
+      .info-title {
+        font-size: 14px;
+        color: darkgray;
+      }
+      .info-text {
+        font-size: 14px;
+        color: black;
+      }
+    }
+  }
+
+  .compute-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0;
+      margin: 10px;
+      justify-content: center;
+      align-items: center;
+
+      .info-title {
+        font-size: 16px;
+        text-transform: capitalize;
+        color: purple;
+      }
+      .info-text {
+        font-size: 18px;
+        text-transform: capitalize;
+        color: purple;
+      }
+
+      .rent-input {
+        height: 50px;
+        border: 1px solid black;
+        width: 100%;
+        margin: 5px;
+        border-radius: 5px;
+      }
+    }
+
+    .graph-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0;
+      margin: 10px;
+      min-width: 40vw;
+    }
+  }
 }
